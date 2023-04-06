@@ -22,6 +22,9 @@ func main() {
 	for range time.Tick(1 * time.Second) {
 		fg(&buf, "282828")
 		bg(&buf, "e78a4e")
+		temp(&buf, "/sys/class/thermal/thermal_zone2/temp")
+		gap(&buf)
+		bg(&buf, "a9b665")
 		time_24h(&buf)
 
 		if C.XStoreName(display, C.XDefaultRootWindow(display), C.CString(buf.String())) < 0 {
