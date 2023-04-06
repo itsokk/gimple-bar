@@ -5,20 +5,12 @@ import (
 	"fmt"
 )
 
-func fg(buf *bytes.Buffer, color string) int {
-	if v, err := fmt.Fprintf(buf, "^c#%s^", color); err != nil {
-		return 0
-	} else {
-		return v
-	}
+func fg(buf *bytes.Buffer, color string) {
+	fmt.Fprintf(buf, "^c#%s^", color)
 }
 
-func bg(buf *bytes.Buffer, color string) int {
-	if v, err := fmt.Fprintf(buf, "^b#%s^", color); err != nil {
-		return 0
-	} else {
-		return v
-	}
+func bg(buf *bytes.Buffer, color string) {
+	fmt.Fprintf(buf, "^b#%s^", color)
 }
 
 const gap_str string = "^f10^"
