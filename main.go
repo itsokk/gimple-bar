@@ -12,19 +12,19 @@ import (
 
 func main() {
 	var buf bytes.Buffer
-    
+
 	display := C.XOpenDisplay(nil)
-	if(display == nil) {
+	if display == nil {
 		panic("Failed to open display.")
 	}
-    defer C.XCloseDisplay(display)
+	defer C.XCloseDisplay(display)
 
-	for range time.Tick(1 * time.Second){
+	for range time.Tick(1 * time.Second) {
 		fg(&buf, "282828")
 		bg(&buf, "e78a4e")
 		time_24h(&buf)
 
-		if (C.XStoreName(display, C.XDefaultRootWindow(display), C.CString(buf.String())) < 0) {
+		if C.XStoreName(display, C.XDefaultRootWindow(display), C.CString(buf.String())) < 0 {
 			panic("Failed to allocate memory")
 		} else {
 			C.XFlush(display)
@@ -32,4 +32,3 @@ func main() {
 		buf.Reset()
 	}
 }
-
