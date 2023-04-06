@@ -7,7 +7,6 @@ package main
 import "C"
 import (
 	"bytes"
-	"fmt"
 	"time"
 )
 
@@ -23,7 +22,7 @@ func main() {
 	for range time.Tick(1 * time.Second){
 		fg(&buf, "282828")
 		bg(&buf, "e78a4e")
-		fmt.Fprintf(&buf, "gimple-bar")
+		time_24h(&buf)
 
 		if (C.XStoreName(display, C.XDefaultRootWindow(display), C.CString(buf.String())) < 0) {
 			panic("Failed to allocate memory")

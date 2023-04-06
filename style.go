@@ -2,7 +2,6 @@ package main
 
 import (
 	"bytes"
-	"encoding/binary"
 	"fmt"
 )
 
@@ -25,5 +24,5 @@ func bg(buf *bytes.Buffer, color string) int {
 const gap_str string = "^f10^"
 
 func gap(buf *bytes.Buffer) {
-	binary.Write(buf, binary.BigEndian, gap_str)
+	fmt.Fprint(buf, gap_str)
 }
