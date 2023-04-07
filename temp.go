@@ -17,7 +17,7 @@ func temp(buf *bytes.Buffer, file string) {
 			fmt.Fprint(buf, "N/A")
 			return
 		} else {
-			fmt.Fprintf(buf, "%d°C", v/1000)
+			fmt.Fprintf(buf, " %d°C ", v/1000)
 			return
 		}
 	}
