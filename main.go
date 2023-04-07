@@ -25,7 +25,7 @@ func main() {
 		temp(&buf, "/sys/class/thermal/thermal_zone2/temp")
 		gap(&buf)
 		bg(&buf, "a9b665")
-		time_24h(&buf)
+		time_12h(&buf)
 
 		if C.XStoreName(display, C.XDefaultRootWindow(display), C.CString(buf.String())) < 0 {
 			panic("Failed to allocate memory")
